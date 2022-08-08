@@ -1,0 +1,23 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --gold-color: linear-gradient(90.09deg, #FF7A00 -8.46%, #F4CF09 53.58%);
+    --black-color: #181818;
+    --current-black: #383838;
+    --gray-color: #646464;
+    --white-color: #ECF0F3;
+    --neon-white: -8px -8px 20px #FFFFFF, 8px 8px 20px #D1D9E6;
+    --neon-black: -8px -8px 20px rgba(56, 56, 56, 0.4), 8px 8px 20px rgba(0, 0, 0, 0.4);
+
+    --transition: all ease .3s;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    padding: 0;
+    margin: 0;
+}
+
