@@ -3,7 +3,7 @@ import './App.scss';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import StartPage from './components/StartPage/StartPage'
 import Navigation from './components/Navigation/Navigation'
-
+import TopMenu from './components/TopMenu/TopMenu'
 import Main from './components/Navigation/Main/Main'
 import Orders from './components/Navigation/Orders/Orders'
 import Scores from './components/Navigation/Scores/Scores'
@@ -12,11 +12,12 @@ import Users from './components/Navigation/Users/Users'
 
 
 function App(){
-  
-
   return(
     <BrowserRouter>
-    <Navigation/>
+    <div className='menu'>
+      <Navigation/>
+      <TopMenu/>
+    </div>
     <Routes>
       <Route path='/' element={<StartPage/>}/>
       <Route path='/Main' element={<Main/>}/>

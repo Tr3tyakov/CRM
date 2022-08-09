@@ -5,7 +5,8 @@ body{
 }
 
 :root{
-    --gold-color: linear-gradient(90.09deg, #FF7A00 -8.46%, #F4CF09 53.58%);
+    //color
+    --gold-color: linear-gradient(90deg, #FF7A00, #F4CF09 55%);
     --black-color: #181818;
     --current-black: #383838;
     --gray-color: #646464;
@@ -13,7 +14,11 @@ body{
     --neon-white: -8px -8px 20px #FFFFFF, 8px 8px 20px #D1D9E6;
     --neon-black: -8px -8px 20px rgba(56, 56, 56, 0.4), 8px 8px 20px rgba(0, 0, 0, 0.4);
 
+    //transition
     --transition: all ease .3s;
+
+    //font-size
+    --medium-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6, p{

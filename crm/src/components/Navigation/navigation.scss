@@ -3,6 +3,7 @@
     height: 100vh;
     background-color: black;
     box-shadow: 3px 0px 3px 3px rgba(0, 0, 0, 0.2);
+    min-width: 275px;
     &__container{
         display:flex;
         flex-direction: column;
@@ -59,7 +60,7 @@
         margin: 5px 0 0 0;
         background-color:var(--black-color);
         transition: all ease .3s;
-        border-bottom: 1px solid var(--black-color);
+        border-bottom: 2px solid var(--black-color);
     }
     &__turnoff{
         width: 15px;
@@ -75,7 +76,6 @@
 .avatar__button:hover{
     transition: var(--transition);
     border-bottom: 2px solid goldenrod;
-    scale: 1.05;
 }
 
 .avatar__block:hover{
@@ -113,7 +113,8 @@
     }
     &__title{
         color: white;
-        margin:0 10px
+        margin:0 10px;
+        font-size: var(--medium-size)
     }
 }
 
