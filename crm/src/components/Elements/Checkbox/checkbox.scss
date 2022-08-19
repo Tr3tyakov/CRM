@@ -1,0 +1,99 @@
+.checkbox{
+    display:flex;
+    padding: 5px;
+    margin: 3px 0;
+    gap: 5px !important;
+    &__input{
+        appearance: none;
+       -webkit-appearance: none;
+        margin: 0;
+       position:absolute;
+       z-index: -1;
+    }
+    &__label{
+        position: relative;
+    }
+    &__span{
+        position: absolute;
+        border: 1px solid var(--white-color);
+        transition: var(--transition);
+        box-shadow: -8px -8px 10px #FFFFFF, 8px 8px 10px #c6c9d0;
+        border-radius: 3px;
+        font-size: var(--medium-size);
+        cursor:pointer;
+        width: 1.2em;
+        height: 1.2em;
+        left: 0;
+        z-index:10;
+
+    }
+    &__children{
+        margin: 0 0 0 1.6em;
+    }
+
+}
+
+//hover
+.checkbox__span:hover{
+    transition: var(--transition);
+    background: rgba(218, 165, 32, 0.348);
+}
+.checkbox__input:disabled + .checkbox__span:hover{
+    transition: var(--transition);
+    box-shadow: -8px -8px 10px #FFFFFF, 8px 8px 10px #c6c9d0, 0 0 0 0.1rem rgba(147, 147, 147, 0.650);
+}
+
+.checkbox__input:checked + .checkbox__span:hover{
+    transition: var(--transition);
+    box-shadow:  -8px -8px 10px #FFFFFF, 8px 8px 10px #c6c9d0, 0 0 0 0.1rem rgba(218, 165, 32, 0.348);
+}
+
+.checkbox__input:checked:disabled + .checkbox__span:hover{
+    transition: var(--transition);
+    box-shadow:  -8px -8px 10px #FFFFFF, 8px 8px 10px #c6c9d0, 0 0 0 0.1rem rgba(147, 147, 147, 0.650);
+}
+
+.checkbox__input:checked + .checkbox__span{
+    background-color: goldenrod;
+    transition: var(--transition);
+
+}
+
+.checkbox__input:checked:disabled + .checkbox__span{
+    background-color: var(--gray-color);
+    transition: var(--transition);
+
+}
+
+.checkbox__input:disabled + .checkbox__span{
+    background-color: var(--gray-color);
+    transition: var(--transition);
+
+}
+
+.checkbox__input:checked + .checkbox__span::after{
+    transition: var(--transition);
+    position: absolute;
+    background-color: white;
+    content:'';
+    width: 3px;
+    height: 12px;
+    border-radius: 1px;
+    top: 18% ;
+    left: 52%;
+    transform: rotate(40deg);
+}
+
+
+.checkbox__input:checked + .checkbox__span::before{
+    transition: var(--transition);
+    position: absolute;
+    background-color: white;
+    content:'';
+    width: 3px;
+    height: 6px;
+    border-radius: 1px;
+    top: 40% ;
+    left: 26%;
+    transform: rotate(-40deg);
+}
