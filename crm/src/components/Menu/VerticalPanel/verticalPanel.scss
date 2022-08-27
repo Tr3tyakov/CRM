@@ -1,7 +1,7 @@
 .navigation{
     position: fixed;
     width: calc(100%/4);
-    height: 100vh;
+    min-height: 100vh;
     background-color: black;
     border-top-right-radius: 4px;
     box-shadow: 3px 0px 3px 3px rgba(0, 0, 0, 0.2);
@@ -25,9 +25,14 @@
     flex-wrap: wrap;
     min-height: 100px;
     align-items: center;
+<<<<<<< HEAD:crm/src/components/Menu/VerticalPanel/verticalPanel.scss
     border-top-right-radius: 4px;
     align-items: center;
     justify-content: center;
+=======
+    border-radius: 4px;
+
+>>>>>>> 9326ae53b188f5cd7d428e6134289a38b54127e6:crm/src/components/Navigation/navigation.scss
     padding: 10px;
     background: var(--black-color);
     box-shadow: 0px 3px 3px  rgba(0, 0, 0, 0.202);
