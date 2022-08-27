@@ -1,23 +1,39 @@
 .menu-container{
-    height: 146px;
-    width: 100%;
+    position: fixed;
+    margin-left: calc(100%/4);
+    margin-top: 45px;
+    width:calc(100% - 100%/4);
     box-shadow: 3px 0px 3px 4px  rgba(0, 0, 0, 0.202);
     background: var(--white-color);
+    transition: var(--transition);
+    z-index: 98;
+    &__full{
+        width: 100%;
+        margin-left: 0%; 
+    }
+    &__disabled{
+        transform: translateY(-200%)
+    }
 }
 
-.horizontal-panel{
-    background: var(--black-color);
-    box-shadow: 3px 0px 3px 4px  rgba(0, 0, 0, 0.202);
-    width: 100%;
+.horizontal-container{
+    z-index: 99;
+    position: fixed;
+    width: calc(100% - 100%/4);
     height: 45px;
-    
+    margin-left: calc(100%/4);
+    background: var(--white-color);
+    transition: var(--transition);
+    &__full{
+        width: 100%;
+        margin: 0%; 
+    }
 }
-
 .counters{
-    margin: 10px 0 10px 10px;
+    margin: 10px;
     display: flex;
     column-gap: 10px;
-    height: calc(146px - 46px - 20px);
+    height:80px;
     
 }
 
@@ -28,17 +44,13 @@
     align-items: center;
     padding: 15px;
     min-width: calc(80%/6);
+    row-gap:10px;
     border-radius: 4px;
     cursor:pointer;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.194);
     border: 2px solid var(--white-color);
     transition: var(--transition);
 
-
-
-    &__number{
-        margin: 15px;
-    }
     &__cross{
         position: absolute;
         display:none;
@@ -65,10 +77,9 @@
 
 
 
-.counter__title h3{
+.counter__title p{
     font-size: var(--medium-size);
     color: var(--black-color);
-    font-weight: 600;
 }
 
 .counter__number p{
