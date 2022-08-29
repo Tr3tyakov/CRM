@@ -59,7 +59,6 @@ const HorizontalPanel: React.FC<IHorizontalPanelProps> = ({
               <button>Выйти</button>
             </div>
           </div>
-          {/* <Button title={"Третьяков"} img={user} alt={"Профиль"}></Button> */}
         </div>
       </div>
     </>

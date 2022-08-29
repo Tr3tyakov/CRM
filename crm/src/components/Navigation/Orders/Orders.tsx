@@ -1,44 +1,29 @@
 import React from "react";
 import Checkbox from "../../Elements/Checkbox/Checkbox";
+import Table from "../../Elements/Table/Table";
 import "./orders.scss";
 
 const table = [
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
-  { "№": 1, type: "buy", Date: new Date(), Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
+  { "№": 1, type: "buy", Successful: true, price: 11000 },
 ];
 
-function Orders() {
+const Orders = () => {
   return (
     <div className="table-container">
-      <table className="table" cellSpacing={"0px"}>
-        <caption className="table__caption">Заказы</caption>
-        <tr>
-          <td>№</td>
-          <td>Тип</td>
-          <td>Стоимость</td>
-          <td>Date покупки</td>
-          <td>Успешность</td>
-        </tr>
-        {table.map((element) => {
-          return (
-            <tr>
-              <td>{element["№"]}</td>
-              <td>{element.type}</td>
-              <td>{element.price}</td>
-              <td>{element.Date.toDateString()}</td>
-              <td>{element.Successful}</td>
-            </tr>
-          );
-        })}
-      </table>
+      <Table
+        title={"Заказы"}
+        header={Object.keys(table[0])}
+        body={table}
+      ></Table>
     </div>
   );
-}
+};
 export default Orders;
