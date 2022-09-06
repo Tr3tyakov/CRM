@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink as Link } from "react-router-dom";
 import clsx from "clsx";
 import "./verticalPanel.scss";
-import Button from "../../Elements/Button/Button";
+import Button from "../../theme/buttonTheme";
 import users from "../../../images/users.svg";
 import user from "../../../images/user.svg";
 import menu from "../../../images/menu.svg";
@@ -40,7 +40,7 @@ function VerticalPanel() {
             <div className="avatar__title">
               <h4 className="avatar__name">Третьяков</h4>
             </div>
-            <Button img={turnoff} alt="Выход"></Button>
+            <Button theme="black" img={turnoff} alt="Выход"></Button>
           </div>
         </div>
         {links.map((element, index) => {

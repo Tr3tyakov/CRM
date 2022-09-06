@@ -71,6 +71,7 @@ const SettingsModal: React.FC<ISettingsModal> = ({
                     );
                   }}
                   checked={element.checked}
+                  justifyContent="flex-start"
                 >
                   <p>{element.title}</p>
                 </Checkbox>

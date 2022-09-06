@@ -3,7 +3,7 @@
     margin-left: calc(100%/4);
     margin-top: 45px;
     width:calc(100% - 100%/4);
-    box-shadow: 3px 0px 3px 4px  rgba(0, 0, 0, 0.202);
+    box-shadow:4px 4px 10px rgb(207, 208, 209);
     background: var(--white-color);
     transition: var(--transition);
     z-index: 98;
@@ -47,7 +47,8 @@
     row-gap:10px;
     border-radius: 4px;
     cursor:pointer;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.194);
+    flex-grow: 1;
+    box-shadow: var(--neon-white);
     border: 2px solid var(--white-color);
     transition: var(--transition);
 

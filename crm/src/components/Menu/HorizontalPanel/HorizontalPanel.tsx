@@ -7,7 +7,7 @@ import gear from "../../../images/gear.svg";
 import { IPanel } from "../../Interface/IHorizontalPanel";
 import clsx from "clsx";
 import user from "../../../images/user.svg";
-import Button from "../../Elements/Button/Button";
+import Button from "../../theme/buttonTheme";
 
 interface IHorizontalPanelProps {
   counters: IPanel[];
@@ -43,8 +43,9 @@ const HorizontalPanel: React.FC<IHorizontalPanelProps> = ({
             img={settings}
             onClick={() => setModal(!modal)}
             alt={"Настройки"}
+            theme="black"
           ></Button>
-          <Button img={gear} alt={"Настройки"}></Button>
+          <Button theme="black" img={gear} alt={"Настройки"}></Button>
         </div>
         <div className="horizontal-panel__flex-container">
           <div className="avatar-box">

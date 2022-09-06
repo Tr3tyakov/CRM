@@ -1,17 +1,15 @@
 .checkbox{
     display:flex;
     padding: 5px;
-    margin: 3px 0;
-    gap: 5px !important;
+    position:relative;
+    width: 20px;
+    height: 20px;
     &__input{
         appearance: none;
        -webkit-appearance: none;
         margin: 0;
        position:absolute;
        z-index: -1;
-    }
-    &__label{
-        position: relative;
     }
     &__span{
         position: absolute;
@@ -21,16 +19,21 @@
         border-radius: 3px;
         font-size: var(--medium-size);
         cursor:pointer;
-        width: 1.2em;
-        height: 1.2em;
-        left: 0;
+        width: 20px;
+        height: 20px;
         z-index:10;
 
     }
     &__children{
-        margin: 2px 0 0 1.6em;
+      
     }
 
+}
+
+.checkbox-wrapper{
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
 }
 
 //hover
@@ -79,7 +82,7 @@
     width: 3px;
     height: 16px;
     border-radius: 1px;
-    top: 4% ;
+    top: 6% ;
     left: 60%;
     transform: rotate(40deg);
 }
@@ -93,7 +96,7 @@
     width: 3px;
     height: 6px;
     border-radius: 1px;
-    top: 38% ;
-    left: 24%;
+    top: 42% ;
+    left: 26%;
     transform: rotate(-40deg);
 }

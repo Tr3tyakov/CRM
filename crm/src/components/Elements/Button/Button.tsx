@@ -1,33 +1,29 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import "./button.scss";
 
-interface IButton {
+export interface IButton {
   img?: any;
-  title?: string;
+  children?: any;
   color?: string;
-  bgColor?: string;
   alt?: string;
   onClick?: any;
+  style?: any;
 }
 
-const Button: React.FC<IButton> = ({
+const BaseButton: React.FC<IButton> = ({
   img,
-  title,
-  bgColor = "inherit",
-  color = "white",
+  children,
+  color,
+  style,
   onClick,
   alt,
 }) => {
   return (
-    <button
-      onClick={onClick}
-      style={{ backgroundColor: bgColor }}
-      className={"button"}
-    >
-      {title && <p style={{ color }}>{title}</p>}
+    <button onClick={onClick} style={style} className={"button"}>
+      {children && <p style={{ color }}>{children}</p>}
       {img && <img src={img} alt={alt ? alt : "Изображение"} />}
     </button>
   );
 };
 
-export default Button;
+export default BaseButton;

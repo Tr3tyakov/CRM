@@ -10,14 +10,16 @@ interface ITable {
 
 const Table: React.FC<ITable> = ({ cellSpacing = 0, title, header, body }) => {
   return (
-    <table className="table" cellSpacing={cellSpacing}>
+    <table className="table" cellSpacing={cellSpacing} align="center">
       {title && <caption className="table__caption">{title}</caption>}
-      <tr>
-        {header.map((element) => (
-          <td>{element}</td>
-        ))}
-      </tr>
       <tbody>
+        <tr className="table__header">
+          {header.map((element, index) => (
+            <td className="table__header-title" key={index}>
+              {element}
+            </td>
+          ))}
+        </tr>
         {body.map((currentObject, indexObject) => (
           <tr key={indexObject}>
             {Object.values(currentObject).map((element: any, index) => (
