@@ -31,3 +31,8 @@
 .table tr:nth-child(even){
     background: #e1e6eb;
 }
+
+.table-row{
+    position:relative;
+    cursor:pointer
+}

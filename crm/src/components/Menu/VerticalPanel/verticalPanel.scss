@@ -116,7 +116,7 @@
     display:flex;
     justify-content: flex-start;
     align-items: center;
-    width: 99%;
+    width: 98%;
     text-decoration: none;
     height: 35px;
     background: var(--black-color);
@@ -125,7 +125,7 @@
     cursor: pointer;
     transition: all ease .3s;
     border-bottom: 1px solid var(--black-color);
-
+    
     &__block{
         width: 20px;
         height: 20px;
@@ -147,17 +147,16 @@
 }
 
 .link:hover{
-    transform: translateX(10px);
     transition: var(--transition);
     box-shadow: 3px 3px 2px 2px rgba(0, 0, 0, 0.216);
+    width: 100%;
+    border-top-right-radius: 5px;
     border-bottom: 1px solid goldenrod;
 }
 
-.link.active::after, .link.active::before {
-    position: absolute;
-    right: 0;
-    content: '';
-    height: 100%;
-    width: 2px;
-    background: goldenrod
-}   
+.link.active{
+    width: 99%;
+    border-top-right-radius: 5px;
+    border-left: 1px solid goldenrod;
+
+}

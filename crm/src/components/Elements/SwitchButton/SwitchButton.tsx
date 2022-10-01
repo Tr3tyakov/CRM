@@ -3,7 +3,7 @@ import "./switchButton.scss";
 
 interface ISwitchButton {
   checked: boolean;
-  onChange: any;
+  onChange: () => void;
 }
 
 const SwitchButton: React.FC<ISwitchButton> = ({ onChange, checked }) => {

@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 const ModalRoot = document.getElementById("modal");
 
 interface IModal {
-  children: ReactElement;
+  children: React.ReactNode;
   changeOpenModal: Function;
   title: string;
   modal: boolean;

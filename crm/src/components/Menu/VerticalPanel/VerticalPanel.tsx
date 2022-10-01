@@ -11,6 +11,7 @@ import list from "../../../images/list.svg";
 import statement from "../../../images/statement.svg";
 import turnoff from "../../../images/turnoff.svg";
 import { useAppSelector } from "../../Hooks/useTypeSelector";
+import Bubble from "../../Elements/Bubble/Bubble";
 
 type Links = { path: string; title: string; icon: string };
 
@@ -45,12 +46,14 @@ function VerticalPanel() {
         </div>
         {links.map((element, index) => {
           return (
-            <Link className="link" key={index} to={`${element.path}`}>
-              <div className="link__block">
-                <img src={element.icon} className="link__icon" alt="icon" />
-              </div>
-              <div className="link__title">{element.title}</div>
-            </Link>
+            <Bubble key={index}>
+              <Link className="link" to={`${element.path}`}>
+                <div className="link__block">
+                  <img src={element.icon} className="link__icon" alt="icon" />
+                </div>
+                <div className="link__title">{element.title}</div>
+              </Link>
+            </Bubble>
           );
         })}
       </div>

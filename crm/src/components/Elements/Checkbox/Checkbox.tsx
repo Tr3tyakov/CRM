@@ -1,11 +1,11 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import "./checkbox.scss";
 
 interface ICheckboxProps {
-  children?: ReactElement;
-  style?: any;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
   checked: boolean;
-  onChange: any;
+  onChange: () => void;
   justifyContent?: string;
 }
 

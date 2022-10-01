@@ -5,12 +5,12 @@ interface ITable {
   header: any[];
   body: any[];
   cellSpacing?: number;
-  title?: String;
+  title?: string;
 }
 
 const Table: React.FC<ITable> = ({ cellSpacing = 0, title, header, body }) => {
   return (
-    <table className="table" cellSpacing={cellSpacing} align="center">
+    <table className="table" cellSpacing={cellSpacing}>
       {title && <caption className="table__caption">{title}</caption>}
       <tbody>
         <tr className="table__header">

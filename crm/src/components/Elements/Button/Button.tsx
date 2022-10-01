@@ -1,13 +1,14 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import "./button.scss";
+import createBubble from "../Bubble/createBubble";
 
 export interface IButton {
-  img?: any;
-  children?: any;
+  img?: string;
+  children?: React.ReactNode;
   color?: string;
   alt?: string;
-  onClick?: any;
-  style?: any;
+  onClick: () => void;
+  style?: React.CSSProperties;
 }
 
 const BaseButton: React.FC<IButton> = ({
@@ -18,8 +19,21 @@ const BaseButton: React.FC<IButton> = ({
   onClick,
   alt,
 }) => {
+  function buttonClick(
+    node: HTMLButtonElement,
+    pageX: number,
+    pageY: number,
+    onClick: () => void
+  ) {
+    createBubble(node, pageX, pageY);
+    onClick();
+  }
   return (
-    <button onClick={onClick} style={style} className={"button"}>
+    <button
+      onClick={(e) => buttonClick(e.currentTarget, e.pageX, e.pageY, onClick)}
+      style={style}
+      className={"button"}
+    >
       {children && <p style={{ color }}>{children}</p>}
       {img && <img src={img} alt={alt ? alt : "Изображение"} />}
     </button>
