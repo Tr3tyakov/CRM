@@ -37,13 +37,18 @@ const Pagination: React.FC<IPagination> = ({ quantity, arrows }) => {
         m="10px 0"
       >
         {arrows && (
-          <ImageContainer
-            className="pagination__block"
-            image={leftArrow}
-            width="40px"
-            height="40px"
-            alt="arrow"
-          />
+          <Bubble className="image-container">
+            <ImageContainer
+              image={leftArrow}
+              width="auto"
+              height="40px"
+              imgWidth="50%"
+              imgHeight="50%"
+              typography="Назад"
+              orientationTypography="left"
+              alt="arrow"
+            />
+          </Bubble>
         )}
         {state.map((element, index) => (
           <Bubble className="pagination__block" key={index}>
@@ -51,13 +56,18 @@ const Pagination: React.FC<IPagination> = ({ quantity, arrows }) => {
           </Bubble>
         ))}
         {arrows && (
-          <ImageContainer
-            className="pagination__block"
-            image={rightArrow}
-            width="40px"
-            height="40px"
-            alt="arrow"
-          />
+          <Bubble className="image-container">
+            <ImageContainer
+              image={rightArrow}
+              width="auto"
+              height="40px"
+              imgWidth="50%"
+              imgHeight="50%"
+              typography="Вперед"
+              orientationTypography="right"
+              alt="arrow"
+            />
+          </Bubble>
         )}
       </Box>
       <Box display="flex" justify="flex-start" align="center" gap="10px">

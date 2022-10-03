@@ -1,4 +1,5 @@
 import React from "react";
+import Box from "../Box/Box";
 
 interface IImageContainer {
   image: string;
@@ -8,9 +9,10 @@ interface IImageContainer {
   imgWidth?: string;
   imgHeight?: string;
   overflow?: string;
-  objectFit?: string;
   alt?: string;
   className?: string;
+  typography?: string;
+  orientationTypography?: string;
 }
 
 const ImageContainer: React.FC<IImageContainer> = ({
@@ -19,19 +21,31 @@ const ImageContainer: React.FC<IImageContainer> = ({
   height = "20px",
   imgWidth = "100%",
   imgHeight = "100%",
-  objectFit = "contain",
   overflow = "hidden",
   alt = "image",
   className,
+  typography,
+  orientationTypography,
 }) => {
   return (
-    <div className={className} style={{ width, height, overflow }}>
+    <Box
+      className={className}
+      width={width}
+      height={height}
+      overflow={overflow}
+      display="flex"
+      align="center"
+      flexDirection={orientationTypography === "left" ? "" : "row-reverse"}
+      gap="3px"
+      p="0 10px"
+    >
       <img
         style={{ width: imgWidth, height: imgHeight, objectFit: "contain" }}
         src={image}
         alt={alt}
       />
-    </div>
+      {typography ? typography : ""}
+    </Box>
   );
 };
 

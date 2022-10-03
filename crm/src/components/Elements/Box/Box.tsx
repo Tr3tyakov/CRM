@@ -7,9 +7,13 @@ interface IBox {
   justify?: string;
   display?: string;
   gap?: string;
+  width?: string;
+  height?: string;
+  overflow?: string;
   p?: string;
   m?: string;
   align?: string;
+  flexDirection?: string;
   wrap?: string;
   onClick?: () => void;
   className?: string;
@@ -25,7 +29,11 @@ const Box: React.FC<IBox> = ({
   p,
   m,
   wrap,
+  width,
+  height,
   align,
+  overflow,
+  flexDirection,
   onClick,
   className,
 }) => {
@@ -34,8 +42,12 @@ const Box: React.FC<IBox> = ({
       justifyContent: justify,
       display,
       gap,
+      width,
+      height,
       padding: p,
       margin: m,
+      overflow,
+      flexDirection,
       flexWrap: wrap,
       alignItems: align,
     },
