@@ -1,0 +1,98 @@
+.checkbox {
+  display: flex;
+  padding: 5px;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  &__input {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  &__span {
+    position: absolute;
+    border: 1px solid var(--white-color);
+    transition: var(--transition);
+    box-shadow: -8px -8px 10px #ffffff, 8px 8px 10px #c6c9d0;
+    border-radius: 3px;
+    font-size: var(--medium-size);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+  }
+  &__children {
+  }
+}
+
+.checkbox__children--deactive {
+  display: none;
+}
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+//hover
+.checkbox__span:hover {
+  transition: var(--transition);
+  background: rgba(218, 165, 32, 0.348);
+}
+.checkbox__input:disabled + .checkbox__span:hover {
+  transition: var(--transition);
+  box-shadow: -8px -8px 10px #ffffff, 8px 8px 10px #c6c9d0, 0 0 0 0.1rem rgba(147, 147, 147, 0.65);
+}
+
+.checkbox__input:checked + .checkbox__span:hover {
+  transition: var(--transition);
+  box-shadow: -8px -8px 10px #ffffff, 8px 8px 10px #c6c9d0, 0 0 0 0.1rem rgba(218, 165, 32, 0.348);
+}
+
+.checkbox__input:checked:disabled + .checkbox__span:hover {
+  transition: var(--transition);
+  box-shadow: -8px -8px 10px #ffffff, 8px 8px 10px #c6c9d0, 0 0 0 0.1rem rgba(147, 147, 147, 0.65);
+}
+
+.checkbox__input:checked + .checkbox__span {
+  background-color: goldenrod;
+  transition: var(--transition);
+}
+
+.checkbox__input:checked:disabled + .checkbox__span {
+  background-color: var(--gray-color);
+  transition: var(--transition);
+}
+
+.checkbox__input:disabled + .checkbox__span {
+  background-color: var(--gray-color);
+  transition: var(--transition);
+}
+
+.checkbox__input:checked + .checkbox__span::after {
+  transition: var(--transition);
+  position: absolute;
+  background-color: white;
+  content: '';
+  width: 3px;
+  height: 16px;
+  border-radius: 1px;
+  top: 6%;
+  left: 60%;
+  transform: rotate(40deg);
+}
+
+.checkbox__input:checked + .checkbox__span::before {
+  transition: var(--transition);
+  position: absolute;
+  background-color: white;
+  content: '';
+  width: 3px;
+  height: 6px;
+  border-radius: 1px;
+  top: 42%;
+  left: 26%;
+  transform: rotate(-40deg);
+}

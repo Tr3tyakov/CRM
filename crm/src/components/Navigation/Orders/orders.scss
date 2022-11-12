@@ -1,0 +1,23 @@
+.table-container{
+    margin-left:calc(100%/4);
+    margin-top: 145px;
+    background-color: var(--whiteColor);
+    display: flex;
+    justify-content: center;
+    background:#ECF0F3;
+    flex-direction:column;
+    padding:10px;
+    &__title{
+        font-size: 20px;
+    }
+}
+
+
+.table{
+    &__panel-bar{
+        margin: 10px 0 ;
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
