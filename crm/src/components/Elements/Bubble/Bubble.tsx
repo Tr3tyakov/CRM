@@ -7,14 +7,25 @@ interface IBubble {
   component?: string;
   className?: string;
   style?: React.CSSProperties;
+  onClick?: () => void;
 }
 
-const Bubble: React.FC<IBubble> = ({ children, style, className, component = 'div' }) => {
+const Bubble: React.FC<IBubble> = ({ children, onClick, style, className, component = 'div' }) => {
+  function onClickElement(
+    currentTarget: HTMLElement,
+    pageX: number,
+    pageY: number,
+    component: string,
+  ) {
+    createBubble(currentTarget, pageX, pageY, component);
+    onClick && onClick();
+  }
+
   return (
     <div
       style={style}
       className={className ? className + ' bubble' : 'bubble'}
-      onClick={(e) => createBubble(e.currentTarget, e.pageX, e.pageY, component)}>
+      onClick={(e) => onClickElement(e.currentTarget, e.pageX, e.pageY, component)}>
       {children}
     </div>
   );
