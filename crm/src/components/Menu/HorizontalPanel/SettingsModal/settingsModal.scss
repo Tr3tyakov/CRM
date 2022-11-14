@@ -1,17 +1,15 @@
-.settings{
-    &__checkbox-block{
-        display:flex;
-        flex-direction: column;
-    }
-    &__subtitle{
-        color:gray
-    }
-}
-
-
-.switch-button__active-panel{
-    display:flex;
+.settings {
+  &__checkbox {
+    display: flex;
+    flex-direction: column;
+  }
+  &__subtitle {
+    color: gray;
+  }
+  &__switch {
+    display: flex;
     column-gap: 10px;
     align-items: center;
     margin: 8px 0 8px 0;
+  }
 }

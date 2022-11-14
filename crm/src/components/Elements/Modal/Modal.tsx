@@ -1,9 +1,9 @@
-import React, { ReactElement } from "react";
-import "./modal.scss";
-import cross from "../../../images/cross.svg";
-import { createPortal } from "react-dom";
+import React, { ReactElement } from 'react';
+import './modal.scss';
+import cross from '../../../images/cross.svg';
+import { createPortal } from 'react-dom';
 
-const ModalRoot = document.getElementById("modal");
+const ModalRoot = document.getElementById('modal');
 
 interface IModal {
   children: React.ReactNode;
@@ -12,21 +12,13 @@ interface IModal {
   modal: boolean;
 }
 
-const ModalWrapper: React.FC<IModal> = ({
-  children,
-  changeOpenModal,
-  title,
-  modal,
-}): any => {
+const ModalWrapper: React.FC<IModal> = ({ children, changeOpenModal, title, modal }): any => {
   if (modal) {
     return createPortal(
       <div className="background-modal" onClick={() => changeOpenModal(false)}>
-        <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+        <div className="container-modal" onClick={(e) => e.stopPropagation()}>
           <div className="modal">
-            <div
-              className="modal__cross-block"
-              onClick={() => changeOpenModal(false)}
-            >
+            <div className="modal__cross-block" onClick={() => changeOpenModal(false)}>
               <img src={cross} alt="cross" />
             </div>
             <div className="modal__title-block">
@@ -36,7 +28,7 @@ const ModalWrapper: React.FC<IModal> = ({
           </div>
         </div>
       </div>,
-      ModalRoot as HTMLElement
+      ModalRoot as HTMLElement,
     );
   }
   return null;

@@ -10,8 +10,10 @@ import chart from '../../../images/chart.svg';
 import list from '../../../images/list.svg';
 import statement from '../../../images/statement.svg';
 import turnoff from '../../../images/turnoff.svg';
-import { useAppSelector } from '../../Hooks/useTypeSelector';
+import { useAppDispatch, useAppSelector } from '../../Hooks/useTypeSelector';
 import Bubble from '../../Elements/Bubble/Bubble';
+import arrow from '../../../images/leftArrow.svg';
+import { changeVersionLeftMenu } from '../../Store/Reducers/leftMenuReducer';
 
 type Links = { path: string; title: string; icon: string };
 
@@ -23,29 +25,62 @@ const links: Links[] = [
   { path: 'Users', title: 'Пользователи', icon: users },
 ];
 
+interface ItypeVerticalPanel {
+  full: 'small';
+  small: 'full';
+}
+
+const typeVerticalPanel: ItypeVerticalPanel = {
+  full: 'small',
+  small: 'full',
+};
+
 function VerticalPanel() {
-  const { leftMenuActive } = useAppSelector((state) => state.leftMenu);
+  const { leftMenuActive, version } = useAppSelector((state) => state.leftMenu);
+  const dispatch = useAppDispatch();
+
+  const versionIsFull = version === 'full' ? true : false;
+
   return (
     <div
       className={clsx({
-        navigation: true,
-        'navigation-disabled': !leftMenuActive,
+        vertical: true,
+        vertical__small: !versionIsFull,
+        vertical__disabled: !leftMenuActive,
       })}>
-      <div className="navigation__container">
-        <div className="avatar">
-          <div className="avatar__block">
-            <img className="avatar__icon" src={user} alt="avatar" />
-          </div>
-          <div className="avatar__info">
-            <div className="avatar__title">
-              <h4 className="avatar__name">Третьяков</h4>
-            </div>
-            <Button
-              onClick={() => console.log('ДА')}
-              theme="black"
-              img={turnoff}
-              alt="Выход"></Button>
-          </div>
+      <div className="vertical__container">
+        <div
+          className="vertical__image"
+          onClick={() => dispatch(changeVersionLeftMenu(typeVerticalPanel[version]))}>
+          <Bubble className="vertical__arrow">
+            <img
+              className={clsx({
+                vertical__icon: true,
+                'vertical__icon--rotate': !versionIsFull,
+              })}
+              src={arrow}
+              alt="arrow"
+            />
+          </Bubble>
+        </div>
+        <div className="vertical__avatar">
+          {versionIsFull && (
+            <>
+              <div className="vertical__avatar__block">
+                <img className="vertical__avatar__icon" src={user} alt="avatar" />
+              </div>
+              <div className="vertical__avatar__info">
+                <div className="vertical__avatar__title">
+                  <h4 className="vertical__avatar__name">Третьяков</h4>
+                </div>
+                <Button
+                  onClick={() => console.log('ДА')}
+                  theme="black"
+                  img={turnoff}
+                  alt="Выход"></Button>
+              </div>
+            </>
+          )}
         </div>
         {links.map((element, index) => {
           return (
@@ -54,7 +89,7 @@ function VerticalPanel() {
                 <div className="link__block">
                   <img src={element.icon} className="link__icon" alt="icon" />
                 </div>
-                <div className="link__title">{element.title}</div>
+                {versionIsFull && <div className="link__title">{element.title}</div>}
               </Link>
             </Bubble>
           );

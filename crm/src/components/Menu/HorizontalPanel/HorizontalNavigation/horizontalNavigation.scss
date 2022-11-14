@@ -1,0 +1,107 @@
+.horizontal {
+  background: var(--black-color);
+  box-shadow: 3px 0px 3px 4px rgba(0, 0, 0, 0.202);
+  height: 45px;
+  display: flex;
+  margin: 0 0 0 10px;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  transition: var(--transition);
+
+  &__user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+    height: 1;
+    border-radius: 10px;
+    padding: 8px;
+
+    box-shadow: var(--neon-black);
+  }
+  &__name {
+    font-size: var(--medium-size);
+    color: white;
+  }
+  &__img-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+  &__flex-container {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.horizontal__avatar {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  &__container {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid goldenrod;
+  }
+  &__info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    row-gap: 2px;
+  }
+  &__circle {
+    position: absolute;
+    top: -6px;
+    right: -4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: goldenrod;
+    cursor: pointer;
+  }
+}
+
+.horizontal__avatar__circle p {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+.horizontal__avatar__container img {
+  width: 85%;
+  border-radius: 50%;
+  height: 85%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.horizontal__avatar__info p {
+  text-transform: capitalize;
+  color: white;
+}
+
+.horizontal__avatar__info button {
+  border: none;
+  cursor: pointer;
+  color: gray;
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
+}

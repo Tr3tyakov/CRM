@@ -1,71 +1,70 @@
 import React from 'react';
+import cross from '../../../images/cross.svg';
+import { useAppSelector, useAppDispatch } from '../../Hooks/useTypeSelector';
+import { changePanel } from '../../Store/Reducers/horizontalPanelReducer';
 import './horizontalPanel.scss';
-import SettingsModal from './SettingsModal/SettingsModal';
-
-import settings from '../../../images/settings.svg';
-import gear from '../../../images/gear.svg';
-import { IPanel } from '../../Interface/IHorizontalPanel';
 import clsx from 'clsx';
-import user from '../../../images/user.svg';
-import Button from '../../theme/buttonTheme';
+import { IPanel } from '../../Interface/IHorizontalPanel';
+import HorizontalNavigation from './HorizontalNavigation/HorizontalNavigation';
 
-interface IHorizontalPanelProps {
-  counters: IPanel[];
-  leftMenuActive: boolean;
-  horizontalPanelActive: boolean;
-}
+function HorizontalPanel() {
+  const { counterPanels, horizontalPanelActive, leftMenuActive, leftMenuVersion } = useAppSelector(
+    (state) => ({
+      leftMenuActive: state.leftMenu.leftMenuActive,
+      leftMenuVersion: state.leftMenu.version,
+      horizontalPanelActive: state.horizontalPanel.horizontalPanelOn,
+      counterPanels: state.horizontalPanel.panels,
+    }),
+  );
+  const dispatch = useAppDispatch();
 
-const HorizontalPanel: React.FC<IHorizontalPanelProps> = ({
-  counters,
-  leftMenuActive,
-  horizontalPanelActive,
-}) => {
-  const [modal, setModal] = React.useState<boolean>(false);
+  const changeCheckedPanel = (title: string, checked: boolean) => {
+    dispatch(changePanel({ title, checked }));
+  };
 
   return (
-    <>
-      <SettingsModal
-        counters={counters}
-        setOpenModal={setModal}
+    <div
+      className={clsx({
+        horizontal__panel: true,
+        horizontal__panel__small: leftMenuVersion === 'small',
+        horizontal__panel__full: !leftMenuActive,
+      })}>
+      <HorizontalNavigation
         leftMenuActive={leftMenuActive}
         horizontalPanelActive={horizontalPanelActive}
-        modal={modal}
+        counters={counterPanels}
       />
 
       <div
         className={clsx({
-          'horizontal-panel': true,
-          'horizontal-panel__full': !leftMenuActive,
+          counters__panel: true,
+          counters__panel__small: leftMenuVersion === 'small',
+          counters__panel__full: !leftMenuActive,
+          'counters__panel--disabled': !horizontalPanelActive,
         })}>
-        <div className="horizontal-panel__flex-container">
-          <Button
-            img={settings}
-            onClick={() => setModal(!modal)}
-            alt={'Настройки'}
-            theme="black"></Button>
-          <Button
-            onClick={() => console.log('ДА')}
-            theme="black"
-            img={gear}
-            alt={'Настройки'}></Button>
-        </div>
-        <div className="horizontal-panel__flex-container">
-          <div className="avatar-box">
-            <div className="avatar-box__img-container">
-              <img src={user} alt="" />
-              <div className="avatar-box__circle">
-                <p>10</p>
-              </div>
-            </div>
-            <div className="avatar-box__info-container">
-              <p>Третьяков Михаил</p>
-              <button>Выйти</button>
-            </div>
-          </div>
+        <div className="counters">
+          {counterPanels.map((element: IPanel) => {
+            if (element.checked) {
+              return (
+                <div className="counter" key={element.title}>
+                  <div
+                    className="counter__cross"
+                    onClick={() => changeCheckedPanel(element.title, false)}>
+                    <img className={'cross__panel'} src={cross} alt="cross" />
+                  </div>
+                  <div className="counter__title">
+                    <p>{element.title}</p>
+                  </div>
+                  <div className="counter__number">
+                    <p>{element.quantity}</p>
+                  </div>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
-    </>
+    </div>
   );
-};
-
+}
 export default HorizontalPanel;

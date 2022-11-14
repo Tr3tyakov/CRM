@@ -7,7 +7,7 @@ import './orders.scss';
 import ImageContainer from '../../Elements/ImageContainer/ImageContainer';
 import Button from '../../theme/buttonTheme';
 import Pagination from '../../Elements/Pagination/Pagination';
-import ContainerLayouts from '../../layouts/Container';
+import ContainerLayouts from '../../layouts/ContainerLayout';
 
 const table = [
   {
@@ -64,8 +64,8 @@ const table = [
 const Orders = () => {
   return (
     <ContainerLayouts>
-      <p className="table-container__title">Заказы</p>
-      <div className="table__panel-bar">
+      <p className="table__title">Заказы</p>
+      <div className="table__bar">
         <ImageContainer image={reload} alt="reload" />
         <Button theme="white" onClick={() => console.log('click')}>
           Новый заказ

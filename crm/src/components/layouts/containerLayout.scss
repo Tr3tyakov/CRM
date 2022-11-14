@@ -1,0 +1,23 @@
+.container {
+  margin-left: calc(100% / 4);
+  margin-top: 145px;
+  background-color: var(--whiteColor);
+  background: #ecf0f3;
+  padding: 10px;
+  height: calc(100vh - 165px);
+  transition: var(--transition);
+}
+
+.container__width {
+  &__small {
+    margin-left: 45px;
+  }
+  &__full {
+    margin-left: 0;
+  }
+}
+
+.container__height {
+  margin-top: 45px;
+  height: calc(100vh - 65px);
+}

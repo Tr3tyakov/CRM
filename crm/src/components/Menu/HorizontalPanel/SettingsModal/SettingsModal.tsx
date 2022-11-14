@@ -1,15 +1,12 @@
-import React from "react";
-import "./settingsModal.scss";
-import Checkbox from "../../../Elements/Checkbox/Checkbox";
-import { IPanel } from "../../../Interface/IHorizontalPanel";
-import {
-  changeHorizontalPanel,
-  changePanel,
-} from "../../../Store/Reducers/horizontalPanelReducer";
-import { useAppDispatch } from "../../../Hooks/useTypeSelector";
-import ModalWrapper from "../../../Elements/Modal/Modal";
-import SwitchButton from "../../../Elements/SwitchButton/SwitchButton";
-import { changeLeftMenu } from "../../../Store/Reducers/leftMenuReducer";
+import React from 'react';
+import './settingsModal.scss';
+import Checkbox from '../../../Elements/Checkbox/Checkbox';
+import { IPanel } from '../../../Interface/IHorizontalPanel';
+import { changeHorizontalPanel, changePanel } from '../../../Store/Reducers/horizontalPanelReducer';
+import { useAppDispatch } from '../../../Hooks/useTypeSelector';
+import ModalWrapper from '../../../Elements/Modal/Modal';
+import SwitchButton from '../../../Elements/SwitchButton/SwitchButton';
+import { changeActiveLeftMenu } from '../../../Store/Reducers/leftMenuReducer';
 
 interface ISettingsModal {
   counters: IPanel[];
@@ -31,29 +28,26 @@ const SettingsModal: React.FC<ISettingsModal> = ({
     <ModalWrapper
       changeOpenModal={setOpenModal}
       modal={modal}
-      title={"Настройка панелей быстрого доступа"}
-    >
+      title={'Настройка панелей быстрого доступа'}>
       <>
         <div>
           <p className="settings__subtitle">Меню</p>
         </div>
-        <div className="switch-button__active-panel">
+        <div className="settings__switch">
           <SwitchButton
-            onChange={() => dispatch(changeLeftMenu(!leftMenuActive))}
+            onChange={() => dispatch(changeActiveLeftMenu(leftMenuActive))}
             checked={leftMenuActive}
           />
           <p>Меню навигации</p>
         </div>
-        <div className="switch-button__active-panel">
+        <div className="settings__switch">
           <SwitchButton
-            onChange={() =>
-              dispatch(changeHorizontalPanel(!horizontalPanelActive))
-            }
+            onChange={() => dispatch(changeHorizontalPanel(!horizontalPanelActive))}
             checked={horizontalPanelActive}
           />
           <p>Меню оповещения</p>
         </div>
-        <div className="settings__checkbox-block">
+        <div className="settings__checkbox">
           <div>
             <p className="settings__subtitle">Блоки информации</p>
           </div>
@@ -67,12 +61,11 @@ const SettingsModal: React.FC<ISettingsModal> = ({
                       changePanel({
                         title: element.title,
                         checked: !element.checked,
-                      })
+                      }),
                     );
                   }}
                   checked={element.checked}
-                  justifyContent="flex-start"
-                >
+                  justifyContent="flex-start">
                   <p>{element.title}</p>
                 </Checkbox>
               );
