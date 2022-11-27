@@ -1,21 +1,20 @@
 import React from 'react';
 import cross from '../../../images/cross.svg';
 import { useAppSelector, useAppDispatch } from '../../Hooks/useTypeSelector';
-import { changePanel } from '../../Store/Reducers/horizontalPanelReducer';
+import { changePanel } from '../../Store/Reducers/sync/horizontalPanel/horizontalPanelReducer';
 import './horizontalPanel.scss';
 import clsx from 'clsx';
-import { IPanel } from '../../Interface/IHorizontalPanel';
 import HorizontalNavigation from './HorizontalNavigation/HorizontalNavigation';
+import { IPanel } from '../../Store/Reducers/sync/horizontalPanel/horizontalPanel..interfaces';
 
 function HorizontalPanel() {
-  const { counterPanels, horizontalPanelActive, leftMenuActive, leftMenuVersion } = useAppSelector(
-    (state) => ({
-      leftMenuActive: state.leftMenu.leftMenuActive,
-      leftMenuVersion: state.leftMenu.version,
-      horizontalPanelActive: state.horizontalPanel.horizontalPanelOn,
-      counterPanels: state.horizontalPanel.panels,
-    }),
-  );
+  const { counterPanels, horizontalPanelActive, verticalPanelActive, verticalPanelVersion } =
+    useAppSelector(({ verticalPanel, horizontalPanel }) => ({
+      verticalPanelActive: verticalPanel.active,
+      verticalPanelVersion: verticalPanel.version,
+      horizontalPanelActive: horizontalPanel.active,
+      counterPanels: horizontalPanel.panels,
+    }));
   const dispatch = useAppDispatch();
 
   const changeCheckedPanel = (title: string, checked: boolean) => {
@@ -26,11 +25,11 @@ function HorizontalPanel() {
     <div
       className={clsx({
         horizontal__panel: true,
-        horizontal__panel__small: leftMenuVersion === 'small',
-        horizontal__panel__full: !leftMenuActive,
+        horizontal__panel__small: verticalPanelVersion === 'small',
+        horizontal__panel__full: !verticalPanelActive,
       })}>
       <HorizontalNavigation
-        leftMenuActive={leftMenuActive}
+        verticalPanelActive={verticalPanelActive}
         horizontalPanelActive={horizontalPanelActive}
         counters={counterPanels}
       />
@@ -38,8 +37,8 @@ function HorizontalPanel() {
       <div
         className={clsx({
           counters__panel: true,
-          counters__panel__small: leftMenuVersion === 'small',
-          counters__panel__full: !leftMenuActive,
+          counters__panel__small: verticalPanelVersion === 'small',
+          counters__panel__full: !verticalPanelActive,
           'counters__panel--disabled': !horizontalPanelActive,
         })}>
         <div className="counters">

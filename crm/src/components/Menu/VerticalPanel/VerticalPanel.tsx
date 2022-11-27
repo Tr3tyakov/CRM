@@ -13,7 +13,7 @@ import turnoff from '../../../images/turnoff.svg';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useTypeSelector';
 import Bubble from '../../Elements/Bubble/Bubble';
 import arrow from '../../../images/leftArrow.svg';
-import { changeVersionLeftMenu } from '../../Store/Reducers/leftMenuReducer';
+import { changeVersionLeftMenu } from '../../Store/Reducers/sync/VerticalPanel/verticalPanelReducer';
 
 type Links = { path: string; title: string; icon: string };
 
@@ -36,7 +36,7 @@ const typeVerticalPanel: ItypeVerticalPanel = {
 };
 
 function VerticalPanel() {
-  const { leftMenuActive, version } = useAppSelector((state) => state.leftMenu);
+  const { active, version } = useAppSelector((state) => state.verticalPanel);
   const dispatch = useAppDispatch();
 
   const versionIsFull = version === 'full' ? true : false;
@@ -46,7 +46,7 @@ function VerticalPanel() {
       className={clsx({
         vertical: true,
         vertical__small: !versionIsFull,
-        vertical__disabled: !leftMenuActive,
+        vertical__disabled: !active,
       })}>
       <div className="vertical__container">
         <div

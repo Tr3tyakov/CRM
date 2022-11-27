@@ -1,7 +1,7 @@
 export type typeVersion = 'small' | 'full';
 
-export interface ILeftMenu {
-  leftMenuActive: boolean;
+export interface IVerticalPanel {
+  active: boolean;
   version: typeVersion;
 }
 

@@ -13,10 +13,10 @@ import HorizontalPanel from './components/Menu/HorizontalPanel/HorizontalPanel';
 function App() {
   return (
     <BrowserRouter>
-      <div className="menu">
-        <VerticalPanel />
-        <HorizontalPanel />
-      </div>
+      {/* <div className="menu"> */}
+      {/* <VerticalPanel /> */}
+      {/* <HorizontalPanel /> */}
+      {/* </div> */}
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/Main" element={<Main />} />

@@ -1,28 +1,60 @@
-import React from "react";
+import React from 'react';
+
+type typeJustifyContent =
+  | 'center'
+  | 'flex-start'
+  | 'flex-end'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly';
+
+type typeDisplay = 'flex' | 'block' | 'inline-block' | 'inline-flex';
+type typeOverflow = 'auto' | 'hidden' | 'scroll';
+type typeFlexDirection = 'column' | 'column-reverse' | 'row' | 'row-reverse';
+type typeAlignItems = 'center' | 'end' | 'flex-start' | 'flex-end' | 'revert';
+export type typeCursor = 'pointer' | 'none	' | 'progress' | 'wait' | 'move' | 'not-allowed';
+type typeWrap = 'wrap' | 'wrap-reverse';
+type typePosition = 'absolute' | 'relative' | 'fixed' | 'sticky';
 
 interface IBox {
   children?: React.ReactNode;
   sx?: object;
   component?: string;
-  justify?: string;
-  display?: string;
+  justify?: typeJustifyContent;
+  display?: typeDisplay;
   gap?: string;
   width?: string;
+  maxWidth?: string;
   height?: string;
-  overflow?: string;
+  overflow?: typeOverflow;
   p?: string;
   m?: string;
-  align?: string;
-  flexDirection?: string;
-  wrap?: string;
-  onClick?: () => void;
+  align?: typeAlignItems;
+  flexDirection?: typeFlexDirection;
+  wrap?: typeWrap;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  onDoubleClick?: (e: React.MouseEvent<HTMLElement>) => void;
   className?: string;
+  backgroundColor?: string;
+  boradius?: string;
+  border?: string;
+  borderTop?: string;
+  borderBottom?: string;
+  borderRight?: string;
+  borderLeft?: string;
+  cursor?: typeCursor;
+  boxShadow?: string;
+  position?: typePosition;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
 }
 
 const Box: React.FC<IBox> = ({
   children,
   sx,
-  component = "div",
+  component = 'div',
   justify,
   display,
   gap,
@@ -30,12 +62,28 @@ const Box: React.FC<IBox> = ({
   m,
   wrap,
   width,
+  maxWidth,
   height,
   align,
   overflow,
   flexDirection,
   onClick,
   className,
+  backgroundColor,
+  boradius,
+  border,
+  borderBottom,
+  borderLeft,
+  borderRight,
+  borderTop,
+  position,
+  top,
+  bottom,
+  right,
+  left,
+  boxShadow,
+  cursor,
+  onDoubleClick,
 }) => {
   const style = {
     ...{
@@ -43,6 +91,7 @@ const Box: React.FC<IBox> = ({
       display,
       gap,
       width,
+      maxWidth,
       height,
       padding: p,
       margin: m,
@@ -50,13 +99,23 @@ const Box: React.FC<IBox> = ({
       flexDirection,
       flexWrap: wrap,
       alignItems: align,
+      backgroundColor: backgroundColor,
+      borderRadius: boradius,
+      border,
+      borderBottom,
+      borderTop,
+      borderLeft,
+      boxShadow,
+      top,
+      bottom,
+      right,
+      left,
+      borderRight,
+      cursor,
+      position,
     },
     ...sx,
   };
-  return React.createElement(
-    component,
-    { style, className, onClick },
-    children
-  );
+  return React.createElement(component, { style, className, onClick, onDoubleClick }, children);
 };
 export default Box;

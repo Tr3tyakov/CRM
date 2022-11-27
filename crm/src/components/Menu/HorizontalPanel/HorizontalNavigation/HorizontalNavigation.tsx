@@ -1,25 +1,22 @@
 import React from 'react';
 import './horizontalNavigation.scss';
 import SettingsModal from '../SettingsModal/SettingsModal';
-
 import settings from '../../../../images/settings.svg';
 import gear from '../../../../images/gear.svg';
-import { IPanel } from '../../../Interface/IHorizontalPanel';
-import clsx from 'clsx';
 import user from '../../../../images/user.svg';
 import Button from '../../../theme/buttonTheme';
-import { typeVersion } from '../../../Interface/ILeftMenu';
 import Box from '../../../Elements/Box/Box';
+import { IPanel } from '../../../Store/Reducers/sync/horizontalPanel/horizontalPanel..interfaces';
 
 interface IHorizontalPanelProps {
   counters: IPanel[];
-  leftMenuActive: boolean;
+  verticalPanelActive: boolean;
   horizontalPanelActive: boolean;
 }
 
 const HorizontalNavigation: React.FC<IHorizontalPanelProps> = ({
   counters,
-  leftMenuActive,
+  verticalPanelActive,
   horizontalPanelActive,
 }) => {
   const [modal, setModal] = React.useState<boolean>(false);
@@ -58,7 +55,7 @@ const HorizontalNavigation: React.FC<IHorizontalPanelProps> = ({
       <SettingsModal
         counters={counters}
         setOpenModal={setModal}
-        leftMenuActive={leftMenuActive}
+        verticalPanelActive={verticalPanelActive}
         horizontalPanelActive={horizontalPanelActive}
         modal={modal}
       />

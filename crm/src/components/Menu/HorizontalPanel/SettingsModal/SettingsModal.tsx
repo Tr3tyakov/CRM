@@ -1,17 +1,20 @@
 import React from 'react';
 import './settingsModal.scss';
 import Checkbox from '../../../Elements/Checkbox/Checkbox';
-import { IPanel } from '../../../Interface/IHorizontalPanel';
-import { changeHorizontalPanel, changePanel } from '../../../Store/Reducers/horizontalPanelReducer';
+import {
+  changeHorizontalPanel,
+  changePanel,
+} from '../../../Store/Reducers/sync/horizontalPanel/horizontalPanelReducer';
 import { useAppDispatch } from '../../../Hooks/useTypeSelector';
 import ModalWrapper from '../../../Elements/Modal/Modal';
 import SwitchButton from '../../../Elements/SwitchButton/SwitchButton';
-import { changeActiveLeftMenu } from '../../../Store/Reducers/leftMenuReducer';
+import { changeActiveLeftMenu } from '../../../Store/Reducers/sync/VerticalPanel/verticalPanelReducer';
+import { IPanel } from '../../../Store/Reducers/sync/horizontalPanel/horizontalPanel..interfaces';
 
 interface ISettingsModal {
   counters: IPanel[];
   setOpenModal: Function;
-  leftMenuActive: boolean;
+  verticalPanelActive: boolean;
   horizontalPanelActive: boolean;
   modal: boolean;
 }
@@ -19,7 +22,7 @@ interface ISettingsModal {
 const SettingsModal: React.FC<ISettingsModal> = ({
   counters,
   setOpenModal,
-  leftMenuActive,
+  verticalPanelActive,
   horizontalPanelActive,
   modal,
 }) => {
@@ -35,8 +38,8 @@ const SettingsModal: React.FC<ISettingsModal> = ({
         </div>
         <div className="settings__switch">
           <SwitchButton
-            onChange={() => dispatch(changeActiveLeftMenu(leftMenuActive))}
-            checked={leftMenuActive}
+            onChange={() => dispatch(changeActiveLeftMenu(verticalPanelActive))}
+            checked={verticalPanelActive}
           />
           <p>Меню навигации</p>
         </div>

@@ -1,5 +1,7 @@
-import React from "react";
-import Box from "../Box/Box";
+import React from 'react';
+import Box from '../Box/Box';
+type typeOverflow = 'auto' | 'hidden' | 'scroll';
+type typeFlexDirection = 'column' | 'column-reverse' | 'row' | 'row-reverse';
 
 interface IImageContainer {
   image: string;
@@ -8,7 +10,7 @@ interface IImageContainer {
   padding?: string;
   imgWidth?: string;
   imgHeight?: string;
-  overflow?: string;
+  overflow?: typeOverflow;
   alt?: string;
   className?: string;
   typography?: string;
@@ -17,12 +19,12 @@ interface IImageContainer {
 
 const ImageContainer: React.FC<IImageContainer> = ({
   image,
-  width = "20px",
-  height = "20px",
-  imgWidth = "100%",
-  imgHeight = "100%",
-  overflow = "hidden",
-  alt = "image",
+  width = '20px',
+  height = '20px',
+  imgWidth = '100%',
+  imgHeight = '100%',
+  overflow = 'hidden',
+  alt = 'image',
   className,
   typography,
   orientationTypography,
@@ -35,16 +37,15 @@ const ImageContainer: React.FC<IImageContainer> = ({
       overflow={overflow}
       display="flex"
       align="center"
-      flexDirection={orientationTypography === "left" ? "" : "row-reverse"}
+      flexDirection={orientationTypography === 'left' ? 'row' : 'row-reverse'}
       gap="3px"
-      p="0 10px"
-    >
+      p="0 10px">
       <img
-        style={{ width: imgWidth, height: imgHeight, objectFit: "contain" }}
+        style={{ width: imgWidth, height: imgHeight, objectFit: 'contain' }}
         src={image}
         alt={alt}
       />
-      {typography ? typography : ""}
+      {typography ? typography : ''}
     </Box>
   );
 };

@@ -8,19 +8,21 @@ interface IContainer {
 }
 
 const ContainerLayouts: React.FC<IContainer> = ({ children }) => {
-  const { topMenuActive, leftMenuActive, leftMenuVersion } = useAppSelector((state) => ({
-    leftMenuActive: state.leftMenu.leftMenuActive,
-    topMenuActive: state.horizontalPanel.horizontalPanelOn,
-    leftMenuVersion: state.leftMenu.version,
-  }));
+  const { horizontalPanelActive, verticalPanelActive, leftMenuVersion } = useAppSelector(
+    ({ horizontalPanel, verticalPanel }) => ({
+      verticalPanelActive: verticalPanel.active,
+      horizontalPanelActive: horizontalPanel.active,
+      leftMenuVersion: verticalPanel.version,
+    }),
+  );
 
   return (
     <div
       className={clsx({
         container: true,
-        container__height: !topMenuActive,
+        container__height: !horizontalPanelActive,
         container__width__small: leftMenuVersion === 'small',
-        container__width__full: !leftMenuActive,
+        container__width__full: !verticalPanelActive,
       })}>
       {children}
     </div>
